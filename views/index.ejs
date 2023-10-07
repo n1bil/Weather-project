@@ -33,12 +33,11 @@
                     <div class="input-container">
                         <label class="input-label">
                             <span class="material-symbols-outlined">add_location_alt</span>
-                            <input type="text" name="location" placeholder="Enter location" autocomplete="off">
+                            <input type="text" name="location" autocomplete="off">
                         </label>
                     </div>
                 </form>
                 <h6 class="date"><%= currentDate %></h6>
-                
             </div>
 
             <div class="right-card">
@@ -112,7 +111,7 @@
                     </div>
                 </div>
             <% } %>
-            <form action="/" method="post" style="min-width: max-content;">
+            <form action="/pagination" method="post" style="min-width: max-content;">
                 <button class="unhidden-button" type="submit" name="action" value="back"><</button>
                 <button class="unhidden-button" type="submit" name="action" value="forward">></button>
             </form>
