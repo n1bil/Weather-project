@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
+
+body {
+    background-size: cover;
+    color: white;
+    font-family: "Roboto Condensed", sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    padding: 0%;
+    margin: 0%;
+}
+
+.left-card {
+    margin-top: 1%;
+    margin-left: 3%;
+    font-size: 2rem;
+}
+
+.right-card {
+    margin-top: 5%;
+    margin-right: 4%;
+}
+
+.right-container {
+    display: flex;
+}
+
+.right-icon {
+    margin-right: 10px;
+    font-size: 2rem;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftProperty {
+    margin: 0%;
+}
+
+.main {
+    font-weight: 400;
+}
+
+.name {
+    font-weight: 300;
+}
+
+.temp {
+    margin: 14px 0;
+}
+
+.location {
+    font-weight: 300;
+    font-size: medium;
+}
+
+.rightProperty {
+    margin: 0%;
+}
+
+.subHumidity,
+.subPressure,
+.subProbability,
+.subWind {
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.first-bottom-card {
+    margin-left: 3%;
+}
+
+.bottom-card {
+    width: 200px;
+    height: 268px;
+    margin-bottom: 3%;
+}
+
+.inner-card {
+    padding: 0 0 10% 10%;
+}
+
+.bottom-temp {
+    font-size: 3rem;
+    margin-top: 16px;
+}
+
+.input-container {
+    position: relative;
+    margin: 0;
+    border-bottom: 2px solid #007bff;
+}
+
+.input-container input[type="text"] {
+    color: white;
+    width: 100%;
+    padding: 10px 10px 10px 0;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    font-size: 16px;
+}
+
+.input-container input[type="text"]:focus {
+    border-color: #0056b3;
+}
+
+.input-container input[type="text"]::placeholder {
+    color: rgb(154, 154, 165)
+}
+
+.input-container input[type="text"]::after {
+    content: "";
+    background-color: #007bff;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+}
+
+.input-label input {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.date {
+    margin-top: 90px;
+    margin-bottom: 0;
+    font-size: large;
+}
+
+.bottom-card:hover {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.hidden-text {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.bottom-card:hover .hidden-text {
+    opacity: 1;
+}
+
+.details-container {
+    display: flex;
+    justify-content: center;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.header-card {
+    display: flex;
+    justify-content: center;
+}
+
+.main-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.subMain {
+    border-bottom: 1px solid #ccc;
+}
+
+h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.span-data {
+    font-size: 0.7em;
+}
+
+.divide {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hidden-button {
+    background-color: rgba(190, 182, 182, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.hidden-button:hover {
+    background-color: rgba(150, 141, 141, 0.4);
+}
+
+.bottom-card:hover button {
+    opacity: 1;
+}
+
+.unhidden-button {
+    background-color: rgba(190, 182, 182, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    margin-top: 85%;
+}
+
+.unhidden-button:hover {
+    background-color: rgba(150, 141, 141, 0.4);
+}
+
+.weather-clear {
+    background-image: url("/images/clear.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.weather-few-clouds {
+    background-image: url("/images/few_clouds.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.weather-drizzle {
+    background-image: url("/images/drizzle.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.weather-rain {
+    background-image: url("/images/rain.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.weather-thunderstorm {
+    background-image: url("/images/lightning.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.weather-snow {
+    background-image: url("/images/snow.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.weather-mist {
+    background-image: url("/images/mist.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}

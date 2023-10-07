@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles/style.css" />
+        <title>Weather</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+    </head>
+    <% if (json.list[0].weather[0].main == 'Clear') { %>
+    <body class="weather-clear">
+    <% } else if (json.list[0].weather[0].main == 'Clouds') { %>
+    <body class="weather-few-clouds">
+    <% } else if (json.list[0].weather[0].main == 'Rain') { %>
+    <body class="weather-rain">
+    <% } else if (json.list[0].weather[0].main == 'Thunderstorm') { %>
+    <body class="weather-thunderstorm">
+    <% } else if (json.list[0].weather[0].main == 'Snow') { %>
+    <body class="weather-snow">
+    <% } else if (json.list[0].weather[0].main == 'Drizzle') { %>
+    <body class="weather-drizzle">
+    <% } else { %>
+    <body class="weather-mist">
+    <% } %>
+        <div class="card">
+            <div class="left-card">
+                <img src="https://openweathermap.org/img/wn/<%= json.list[0].weather[0].icon %>@2x.png" alt="weather-icon" />
+                <h2 class="main leftProperty"><%= json.list[0].weather[0].main %></h2>
+                <h6 class="name leftProperty"><%= json.city.name %>, <%= json.city.country %></h6>
+                <h1 class="temp leftProperty"><%= json.list[0].main.temp %><sup>&deg;C</sup></h1>
+                <h6 class="location leftProperty">Change location:</h6>
+                <form action="/search" method="post">
+                    <div class="input-container">
+                        <label class="input-label">
+                            <span class="material-symbols-outlined">add_location_alt</span>
+                            <input type="text" name="location" placeholder="Enter location" autocomplete="off">
+                        </label>
+                    </div>
+                </form>
+                <h6 class="date"><%= currentDate %></h6>
+                
+            </div>
+
+            <div class="right-card">
+                <div class="right-container">
+                    <div class="right-icon"><span class="material-symbols-outlined">
+                        humidity_percentage
+                        </span></div>
+                    <div class="text">
+                      <h4 class="humidity rightProperty">Humidity</h4>
+                      <h2 class="subHumidity rightProperty"><%= json.list[0].main.humidity %>%</h2>
+                    </div>
+                </div>
+
+                <div class="right-container">
+                    <div class="right-icon">
+                        <span class="material-symbols-outlined">readiness_score</span>
+                    </div>
+                    <div class="text">
+                      <h4 class="pressure rightProperty">Air Pressure</h4>
+                      <h2 class="subPressure rightProperty"><%= json.list[0].main.pressure %> PS</h2>
+                    </div>
+                </div>
+
+                <div class="right-container">
+                    <div class="right-icon">
+                        <span class="material-symbols-outlined">visibility</span>
+                    </div>
+                    <div class="text">
+                      <h4 class="possibility rightProperty">Visibility</h4>
+                      <h2 class="subProbability rightProperty"><%= json.list[0].visibility %> km</h2>
+                    </div>
+                </div>
+
+                <div class="right-container">
+                    <div class="right-icon">
+                        <span class="material-symbols-outlined">air</span>
+                    </div>
+                    <div class="text">
+                      <h4 class="wind rightProperty">Wind Speed</h4>
+                      <h2 class="subWind rightProperty"><%= json.list[0].wind.speed %> km/h</h2>
+                    </div>
+                </div>
+
+                <div class="right-container">
+                    <div class="right-icon">
+                        <span class="material-symbols-outlined">cloud</span>
+                    </div>
+                    <div class="text">
+                      <h4 class="wind rightProperty">Clouds</h4>
+                      <h2 class="subWind rightProperty"><%= json.list[0].clouds.all %> %</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-container">
+            <% for (let i = startIndex; i < startIndex + 6 && i < json.list.length; i++) { %>
+                <div class="bottom-card">
+                    <div class="inner-card">
+                        <div class="divide">
+                            <p><%= new Date(json.list[i].dt_txt).getHours() %>:00</p>
+                            <img src="https://openweathermap.org/img/wn/<%= json.list[i].weather[0].icon %>@2x.png" alt="weather-icon" />
+                        </div>
+                        <h1 class="bottom-temp"><%= json.list[i].main.temp %><sup>&deg;C</sup></h1>
+                        <div class="divide">
+                            <p class="hidden-text">Feels like <%= json.list[i].main.feels_like %><sup>&deg;C</sup></p>
+                            <form action="/details" method="post">
+                                <button class="hidden-button" type="submit" value="<%= i + 1 %>" name="choice">+</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+            <form action="/" method="post" style="min-width: max-content;">
+                <button class="unhidden-button" type="submit" name="action" value="back"><</button>
+                <button class="unhidden-button" type="submit" name="action" value="forward">></button>
+            </form>
+        </div>
+        
+        
+
+        <% if (locals.number) { %>
+        <div class="details-container">
+            <div class="details">
+                <div class="header-card">
+                    <h1>Weather Data of <%= json.city.name %></h1>
+                </div>
+                <div class="main-card">
+                    <div class="subMain">
+                        <h3>Description: <span class="span-data"><%= json.list[number].weather[0].description %></span></h3>
+                    </div>
+                    <div class="subMain">
+                        <h3>Sunrise: <span class="span-data"><%= json.city.sunrise %> AM</span></h3>
+                    </div>
+                    <div class="subMain">
+                        <h3>Sunset: <span class="span-data"><%= json.city.sunset %> PM</span></h3>
+                    </div>
+                    <div class="subMain">
+                        <h3>Longitude: <span class="span-data"><%= json.city.coord.lon %></span></h3>
+                    </div>
+                    <div class="subMain">
+                        <h3>Latitude: <span class="span-data"><%= json.city.coord.lat %></span></h3>
+                    </div>
+                    <div class="subMain">
+                        <h3>Population: <span class="span-data"><%= json.city.population %></span></h3>
+                    </div>
+                    <div class="subMain">
+                        <h3>Timezone: <span class="span-data"><%= json.city.timezone %></span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "homepage": "./",
+  "name": "weather-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}
