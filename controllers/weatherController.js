@@ -9,8 +9,13 @@ export async function getWeather(req, res) {
         const result = await fetchLocationData(location);
         res.render('index.ejs', { json: result, startIndex: startIndex, currentDate: currentTime() });
     } catch (error) {
-        console.error(error.response.data);
-        res.status(500).send(error.response.data);
+        if (error.response && error.response.data) {
+            console.error(error.response.data);
+            res.status(500).send(error.response.data);
+        } else {
+            console.error(error.message);
+            res.status(500).send('Internal Server Error');
+        }
     }
 }
 
